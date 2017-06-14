@@ -15,20 +15,32 @@ console.log('Ribo is preparing to translate genetic code...');
 // Set up the args/options
 program
     .arguments('<component>')
-    // .option('-c, --component <component>', 'The component name to create test for, e.g. <Modal /> would be Modal')
+    .option('-e, --extension <extension>', 'changes the default extension from .tsx to whatever extension you desire, e.g. -e ts')
+    .option('-s, --sinon', 'imports sinon as a dependency')
+    .option('-m, --mount', 'imports the mount method from enzyme')
+    .option('-r, --render', 'imports the render(static HTML render) from enzyme')
     .action(function(component) {
-        console.log('Creating enzyme test file for: <%s>', component);
-        const componentCaps = component.charAt(0).toUpperCase() + component.slice(1);
-        const fileName = `${component}-test.tsx`;
-        const contents =
-`
-import * as React from 'react';
-import * as sinon from 'sinon';
-import { shallow } from 'enzyme';
+        console.log('Creating enzyme test file for: <%s />', component);
+
+        let componentCaps = component;
+        componentCaps = componentCaps.charAt(0).toUpperCase() + componentCaps.slice(1);
+        component = componentCaps.charAt(0).toLowerCase() + componentCaps.slice(1);
+
+        // args
+        const extension = program.extension ? program.extension : 'tsx';
+        const sinon = program.sinon ? `import * as sinon from 'sinon'` : '';
+        const mount = program.mount ? ', mount' : '';
+        const render = program.render ? ', render': '';
+
+
+        const fileName = `${componentCaps}-test.${extension}`;
+        const contents = `import * as React from 'react';
+${sinon}
+import { shallow${mount}${render} } from 'enzyme';
 import ${componentCaps} from '../${componentCaps}';
 
 describe('<${componentCaps} /> component', () => {
-    it('should render a div with className .${component}', () => {
+    it('should render a div with className .${componentCaps}', () => {
         const ${component} = shallow(<${component} />);
         expect(${component}.find('div.${componentCaps}').length).toBe(1);
     });
