@@ -1,0 +1,27 @@
+{
+  "name": "ribo",
+  "version": "0.0.1",
+  "engine"
+  "description": "A command line tool for generating common enzyme test file boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "React",
+    "Enzyme"
+  ],
+  "author": "brentoneill@gmail.com",
+  "license": "Apache-2.0",
+  "bin": {
+    "ribo": "./index.js"
+  },
+  "dependencies": {
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.9.0"
+  },
+    "engines": {
+      "node": ">=6.0.0"
+  }
+}
