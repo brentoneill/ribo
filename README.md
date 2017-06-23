@@ -2,7 +2,7 @@
 Super basic CLI tool that spits out enzyme test file boilerplate for use with React.
 
 
-> Enzymes are a type of protein, and like other proteins, they are made by the translation of the genetic code into a particular sequence of amino acids by ribosomes
+> Enzymes are a type of protein, and like other proteins, they are made by the translation of the genetic code into a particular sequence of amino acids by *ribo*somes
 
 
 ## Installation
