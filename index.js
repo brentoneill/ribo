@@ -19,7 +19,7 @@ program
     .option('-s, --sinon', 'imports sinon as a dependency')
     .option('-m, --mount', 'imports the mount method from enzyme')
     .option('-r, --render', 'imports the render(static HTML render) from enzyme')
-    .action(function(component) {
+    .action((component) => {
         console.log('Creating enzyme test file for: <%s />', component);
 
         let componentCaps = component;
@@ -31,23 +31,27 @@ program
         const sinon = program.sinon ? `import * as sinon from 'sinon'` : '';
         const mount = program.mount ? ', mount' : '';
         const render = program.render ? ', render': '';
-
-
         const fileName = `${componentCaps}-test.${extension}`;
+
         const contents = `import * as React from 'react';
 ${sinon}
 import { shallow${mount}${render} } from 'enzyme';
 import ${componentCaps} from '../${componentCaps}';
 
+const defaultProps = {
+
+};
+
 describe('<${componentCaps} /> component', () => {
-    it('should render a div with className .${componentCaps}', () => {
-        const ${component} = shallow(<${component} />);
-        expect(${component}.find('div.${componentCaps}').length).toBe(1);
+    const ${component} = shallow(<${componentCaps} {...defaultProps} />);
+
+    it('should render a <${componentCaps}>', () => {
+        expect(${component}.find('${componentCaps}').length).toBe(1);
     });
 });
 `;
 
-        fs.writeFile(fileName, contents, function(err) {
+        fs.writeFile(fileName, contents, (err) => {
             if (err) {
                 return console.error(err);
             }
