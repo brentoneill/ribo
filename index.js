@@ -46,7 +46,7 @@ describe('<${componentCaps} /> component', () => {
     const ${component} = shallow(<${componentCaps} {...defaultProps} />);
 
     it('should render a <${componentCaps}>', () => {
-        expect(${component}.find('${componentCaps}').length).toBe(1);
+        expect(${component}.find('.${componentCaps}').length).toBe(1);
     });
 });
 `;
