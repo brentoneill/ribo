@@ -28,7 +28,7 @@ program
 
         // args
         const extension = program.extension ? program.extension : 'tsx';
-        const sinon = program.sinon ? `import * as sinon from 'sinon'` : '';
+        const sinon = program.sinon ? `import * as sinon from 'sinon;'` : '';
         const mount = program.mount ? ', mount' : '';
         const render = program.render ? ', render': '';
         const fileName = `${componentCaps}-test.${extension}`;
