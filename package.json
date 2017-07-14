@@ -1,6 +1,6 @@
 {
   "name": "ribo",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A command line tool for generating common enzyme test file boilerplate",
   "main": "index.js",
   "scripts": {
