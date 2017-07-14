@@ -29,3 +29,10 @@ Just type `ribo <componentName>` and ribo will spit out an enzyme test file (Jus
     -m, --mount                  imports the mount method from enzyme
     -r, --render                 imports the render(static HTML render) from enzyme
  ```
+
+## Roadmap
+- Scan props and spit out 
+- Scan props and spit out assertion for each prop
+- Same as above, but for state
+
+** note: these all hinge on using .ts/.tsx **
