@@ -35,4 +35,4 @@ Just type `ribo <componentName>` and ribo will spit out an enzyme test file (Jus
 - Scan props and spit out assertion for each prop
 - Same as above, but for state
 
-** note: these all hinge on using .ts/.tsx **
+**note: these all hinge on using .ts/.tsx**
